@@ -2,9 +2,35 @@
 
 int main() {
 	Table t;
-	Row a; a.container = { "a", "b", "c" };
-	Row b; b.container = { "c", "d" };
-	t.container = { a, b };
+	t.set_headers(Row{ { "h1", "h2" } });
+	t.add_row(Row{ { "a", "b" } });
+	t.add_row(Row{ { "a", "b" } });
+	t.add_row(Row{ { "aasdfsadgf", "basdgdasfg" } });
+	t.add_row(Row{ { "aasdfsadgf", "basdgdasfg" } });
+	t.add_row(Row{ { "aasdfsadgf", "basdgdasfg" } });
+	t.add_row(Row{ { "aasdfsadgf", "basdgdasfg" } });
+	t.add_row(Row{ { "aasdfsadgf", "basdgdasfg" } });
+	t.add_row(Row{ { "aasdfsadgf", "basdgdasfg" } });
+	t.add_row(Row{ { "aasdfsadgf", "basdgdasfg" } });
+	t.add_row(Row{ { "aasdfsadgf", "basdgdasfg" } });
+	t.add_row(Row{ { "aasdfsadgf", "basdgdasfg" } });
+	t.add_row(Row{ { "aasdfsadgf", "basdgdasfg" } });
+	t.add_row(Row{ { "aasdfsadgf", "basdgdasfg" } });
+	t.add_row(Row{ { "aasdfsadgf", "basdgdasfg" } });
+	t.add_row(Row{ { "aasdfsadgf", "basdgdasfg" } });
+	t.add_row(Row{ { "aasdfsadgf", "basdgdasfg" } });
+	t.add_row(Row{ { "aasdfsadgf", "basdgdasfg" } });
+	t.add_row(Row{ { "aasdfsadgf", "basdgdasfg" } });
+	t.add_row(Row{ { "aasdfsadgf", "basdgdasfg" } });
+	t.add_row(Row{ { "aasdfsadgf", "basdgdasfg" } });
+	t.add_row(Row{ { "aasdfsadgf", "basdgdasfg" } });
+	t.add_row(Row{ { "aasdfsadgf", "basdgdasfg" } });
+	t.add_row(Row{ { "aasdfsadgf", "basdgdasfg" } });
+	t.add_row(Row{ { "aasdfsadgf", "basdgdasfg" } });
+	t.add_row(Row{ { "aasdfsadgf", "basdgdasfg" } });
+	t.add_row(Row{ { "aasdfsadgf", "basdgdasfg" } });
+	t.add_row(Row{ { "aasdfsadgf", "basdgdasfg" } });
+	t.add_row(Row{ { "aasdfsadgf", "basdgdasfg" } });
 	std::cout << t;
 	return 0;
 }

@@ -6,20 +6,33 @@
 	#include <vector>
 	#include <string>
 	#include <iostream>
-
+	#include <iomanip>
+	//#include <algorithm>
+	
+	// TODO template
 	class Row {
-		public: // на время
+		private: // на время
 			std::vector<std::string> container;
 		public:
 			Row();
+			Row(std::vector<std::string> row);
+
+			bool set_container(std::vector<std::string> row);
+
+			size_t size() const;
+
+			std::string& operator[](int index);
 
 		friend class Table;
 
-		friend std::ostream& operator<<(std::ostream& out, const Row& row);
+		friend std::ostream& operator<<(std::ostream& out, Row& row);
+		friend std::ostream& operator<<(std::ostream& out, Table& table);
 	};
 
 	class Table {
-		public: // на время
+		private: // на время
+			Row headers;
+			std::vector<int> element_width;
 			std::vector<Row> container;
 			
 			std::string vertical_separator;
@@ -30,9 +43,16 @@
 		public:
 			Table();
 
-			friend Table& operator<<(Table& out, const Row& in);
+			size_t size() const;
 
-			friend std::ostream& operator<<(std::ostream& out, const Table& table);
+			Row& operator[](int index);
+
+			bool set_headers(Row headers);
+			bool add_row(Row row);
+
+		friend Table& operator<<(Table& out, Row& in);
+
+		friend std::ostream& operator<<(std::ostream& out, Table& table);
 	};
 
 
