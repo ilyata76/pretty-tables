@@ -54,12 +54,36 @@ bool Table::add_row(Row row) {
 	}
 }
 
+void Table::pop_back() {
+	return this->container.pop_back();
+}
+
+bool Table::set_vertical_separator(std::string separator) {
+	this->vertical_separator = separator;
+	return true;
+}
+
+bool Table::set_horizontal_separator(std::string separator) {
+	this->horizontal_separator = separator;
+	return true;
+}
+
+bool Table::set_intersection_separator(std::string separator) {
+	this->intersection_separator = separator;
+	return true;
+}
+
 std::ostream& operator<<(std::ostream& out, Row& row) {
 
 	for (const auto& element : row.container) {
-		out << element;
+		out << ' ' << element;
 	}
 
+	return out;
+}
+
+Table& operator<<(Table& out, Row& in){
+	out.add_row(in);
 	return out;
 }
 
@@ -67,10 +91,14 @@ std::ostream& operator<<(std::ostream& out, Table& table) {
 	std::vector<std::string> horizontal_separators;
 	int element_size = 0;
 
+	auto get_width = [table](int index) {
+		return table.element_width[index] + 1;
+	};
+
 	// определим horizontal_separators;
 	horizontal_separators.push_back(table.intersection_separator);
 	for (size_t i = 0; i < table.headers.size(); ++i) {
-		element_size = table.element_width[i] + 1;
+		element_size = get_width(i);
 
 		for (int k = 0; k < element_size; ++k) {
 			horizontal_separators.push_back(table.horizontal_separator);
@@ -79,22 +107,20 @@ std::ostream& operator<<(std::ostream& out, Table& table) {
 	horizontal_separators.pop_back();
 	horizontal_separators.push_back(table.intersection_separator);
 
-	// выведем заголовки
-	out << "ТАБЛИЦА\n\n";
-
 	// функция для разделителя горизонтального
-
 	auto print_horizontal_separators = [&]() {
 		for (const auto& separator : horizontal_separators) {
 			out << separator;
 		}
 	}; 
 	
+	/// используем 
 	print_horizontal_separators();  out << '\n';
 
+	// выведем заголовки
 	for (size_t i = 0; i < table.headers.size(); ++i) {
 		auto element = table.headers[i];
-		element_size = table.element_width[i] + 1;
+		element_size = get_width(i);
 		out << table.vertical_separator << std::left << std::setw(element_size) << element;
 	}
 
@@ -104,21 +130,17 @@ std::ostream& operator<<(std::ostream& out, Table& table) {
 	print_horizontal_separators(); 	out << '\n';
 
 	// теперь выводим таблицу
-
 	for (size_t j = 0; j < table.size(); ++j) {
-
 		for (size_t i = 0; i < table[j].size(); ++i) {
 			auto element = table[j][i];
-			element_size = table.element_width[i] + 1;
+			element_size = get_width(i);
 			out << table.vertical_separator << std::left << std::setw(element_size) << element;
-
 		}
-
 		out << table.vertical_separator;
 		out << '\n';
 	}
 
-	print_horizontal_separators(); out << '\n';
+	print_horizontal_separators();
 	
 	return out;
 }

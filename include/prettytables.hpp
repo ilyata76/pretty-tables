@@ -50,6 +50,17 @@
 			bool set_headers(Row headers);
 			bool add_row(Row row);
 
+			void pop_back();
+
+			// плохо работает (таблица съезжает)
+			bool set_vertical_separator(std::string separator);
+
+			// плохо работает (таблица съезжает)
+			bool set_horizontal_separator(std::string separator);
+
+			// плохо работает (таблица съезжает)
+			bool set_intersection_separator(std::string separator);
+
 		friend Table& operator<<(Table& out, Row& in);
 
 		friend std::ostream& operator<<(std::ostream& out, Table& table);
