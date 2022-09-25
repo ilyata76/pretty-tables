@@ -10,7 +10,6 @@
 	class Row {
 		public: // на время
 			std::vector<std::string> container;
-			int size;
 		public:
 			Row();
 
@@ -26,6 +25,8 @@
 			std::string vertical_separator;
 			std::string horizontal_separator;
 			std::string intersection_separator;
+
+			int row_size;
 		public:
 			Table();
 
