@@ -92,7 +92,7 @@ std::ostream& operator<<(std::ostream& out, Table& table) {
 	int element_size = 0;
 
 	auto get_width = [table](size_t index) {
-		return table.element_width[index] + 1;
+		return table.element_width[index] + 2;
 	};
 
 	// определим horizontal_separators;
@@ -120,8 +120,8 @@ std::ostream& operator<<(std::ostream& out, Table& table) {
 	// выведем заголовки
 	for (size_t i = 0; i < table.headers.size(); ++i) {
 		auto element = table.headers[i];
-		element_size = get_width(i);
-		out << table.vertical_separator << std::left << std::setw(element_size) << element;
+		element_size = get_width(i) - 1;
+		out << table.vertical_separator << " " << std::left << std::setw(element_size) << element;
 	}
 
 	out << table.vertical_separator;
@@ -133,8 +133,8 @@ std::ostream& operator<<(std::ostream& out, Table& table) {
 	for (size_t j = 0; j < table.size(); ++j) {
 		for (size_t i = 0; i < table[j].size(); ++i) {
 			auto element = table[j][i];
-			element_size = get_width(i);
-			out << table.vertical_separator << std::left << std::setw(element_size) << element;
+			element_size = get_width(i) - 1;
+			out << table.vertical_separator << " " << std::left << std::setw(element_size) << element;
 		}
 		out << table.vertical_separator;
 		out << '\n';

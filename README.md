@@ -1,72 +1,33 @@
 # pretty-tables
+code:
 ```cpp
+int main() {
 	Table t;
-	t.set_headers(Row{ { "h1", "h2" } });
-	t.add_row(Row{ { "a", "b" } });
-	t.add_row(Row{ { "a", "b" } });
-	t.add_row(Row{ { "aasdfsadgf", "basdgdasfg" } });
-	t.add_row(Row{ { "aasdfsadgf", "basdgdasfg" } });
-	t.add_row(Row{ { "aasdfsadgf", "basdgdasfg" } });
-	t.add_row(Row{ { "aasdfsadgf", "basdgdasfg" } });
-	t.add_row(Row{ { "aasdfsadgf", "basdgdasfg" } });
-	t.add_row(Row{ { "aasdfsadgf", "basdgdasfg" } });
-	t.add_row(Row{ { "aasdfsadgf", "basdgdasfg" } });
-	t.add_row(Row{ { "aasdfsadgf", "basdgdasfg" } });
-	t.add_row(Row{ { "aasdfsadgf", "basdgdasfg" } });
-	t.add_row(Row{ { "aasdfsadgf", "basdgdasfg" } });
-	t.add_row(Row{ { "aasdfsadgf", "basdgdasfg" } });
-	t.add_row(Row{ { "aasdfsadgf", "basdgdasfg" } });
-	t.add_row(Row{ { "aasdfsadgf", "basdgdasfg" } });
-	t.add_row(Row{ { "aasdfsadgf", "basdgdasfg" } });
-	t.add_row(Row{ { "aasdfsadgf", "basdgdasfg" } });
-	t.add_row(Row{ { "aasdfsadgf", "basdgdasfg" } });
-	t.add_row(Row{ { "aasdfsadgf", "basdgdasfg" } });
-	t.add_row(Row{ { "aasdfsadgf", "basdgdasfg" } });
-	t.add_row(Row{ { "aasdfsadgf", "basdgdasfg" } });
-	t.add_row(Row{ { "aasdfsadgf", "basdgdasfg" } });
-	t.add_row(Row{ { "aasdfsadgf", "basdgdasfg" } });
-	t.add_row(Row{ { "aasdfsadgf", "basdgdasfg" } });
-	t.add_row(Row{ { "aasdfsadgf", "basdgdasfg" } });
-	t.add_row(Row{ { "aasdfsadgf", "basdgdasfg" } });
-	t.add_row(Row{ { "aasdfsadgf", "basdgdasfg" } });
-	t.add_row(Row{ { "aasdfsadgf", "basdgdasfg" } });
-	t << Row{ { "zcvbzcxvbzcvb", "basdxcvbxcvbcxvbxcvbgdasfg" } }
-	<< Row{ {"a", "a"} };
-	t.pop_back();
+	t.set_headers(Row{ { "City name", "Population" } });
+	t <<
+		Row{ { "Adelaide"    , std::to_string(1158259) } } <<
+		Row{ { "Brisbane"	, std::to_string(1857594) } } <<
+		Row{ { "Darwin"		, std::to_string(120900) } } <<
+		Row{ { "Hobart"		, std::to_string(205556) } } <<
+		Row{ { "Melbourne"	, std::to_string(3806092) } } <<
+		Row{ { "Perth"		, std::to_string(1554769) } } <<
+		Row{ { "Sydney"		, std::to_string(4336374) } };
+	t.add_row(Row{ {"a", "b"} }); t.pop_back();
 	std::cout << t;
+	return 0;
+}
 ```
+result:
 ```
-+——————————————+———————————————————————————+
-|h1            |h2                         |
-+——————————————+———————————————————————————+
-|a             |b                          |
-|a             |b                          |
-|aasdfsadgf    |basdgdasfg                 |
-|aasdfsadgf    |basdgdasfg                 |
-|aasdfsadgf    |basdgdasfg                 |
-|aasdfsadgf    |basdgdasfg                 |
-|aasdfsadgf    |basdgdasfg                 |
-|aasdfsadgf    |basdgdasfg                 |
-|aasdfsadgf    |basdgdasfg                 |
-|aasdfsadgf    |basdgdasfg                 |
-|aasdfsadgf    |basdgdasfg                 |
-|aasdfsadgf    |basdgdasfg                 |
-|aasdfsadgf    |basdgdasfg                 |
-|aasdfsadgf    |basdgdasfg                 |
-|aasdfsadgf    |basdgdasfg                 |
-|aasdfsadgf    |basdgdasfg                 |
-|aasdfsadgf    |basdgdasfg                 |
-|aasdfsadgf    |basdgdasfg                 |
-|aasdfsadgf    |basdgdasfg                 |
-|aasdfsadgf    |basdgdasfg                 |
-|aasdfsadgf    |basdgdasfg                 |
-|aasdfsadgf    |basdgdasfg                 |
-|aasdfsadgf    |basdgdasfg                 |
-|aasdfsadgf    |basdgdasfg                 |
-|aasdfsadgf    |basdgdasfg                 |
-|aasdfsadgf    |basdgdasfg                 |
-|aasdfsadgf    |basdgdasfg                 |
-|aasdfsadgf    |basdgdasfg                 |
-|zcvbzcxvbzcvb |basdxcvbxcvbcxvbxcvbgdasfg |
-+——————————————+———————————————————————————+
++———————————+————————————+
+| City name | Population |
++———————————+————————————+
+| Adelaide  | 1158259    |
+| Brisbane  | 1857594    |
+| Darwin    | 120900     |
+| Hobart    | 205556     |
+| Melbourne | 3806092    |
+| Perth     | 1554769    |
+| Sydney    | 4336374    |
++———————————+————————————+
 ```
