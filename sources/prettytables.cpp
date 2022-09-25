@@ -12,7 +12,7 @@ size_t Table::size() const {
 	return this->container.size();
 }
 
-Row& Table::operator[](int index) {
+Row& Table::operator[](size_t index) {
 	return this->container[index];
 }
 
@@ -21,15 +21,15 @@ bool Table::set_headers(Row headers) {
 	this->row_size = this->headers.size();
 
 	for (const auto& x : this->headers.container) {
-		this->element_width.push_back(this->headers.size());
+		this->element_width.push_back(static_cast<int>(this->headers.size()));
 	}
 
 	// скрининг на максимальные элементы
 	// скрининг по заголовкам
 	for (int j = 0; j < this->headers.size(); j++) {
 		this->element_width[j] =
-			this->element_width[j] < this->headers[j].size() ?
-							this->headers[j].size() : this->element_width[j];
+			this->element_width[j] < static_cast<int>(this->headers[j].size()) ?
+				static_cast<int>(this->headers[j].size()) : this->element_width[j];
 	}
 
 	return true;
@@ -41,8 +41,8 @@ bool Table::add_row(Row row) {
 		// скрининг на максимальные размеры ячеек
 		for (int j = 0; j < row.size(); ++j) {
 			this->element_width[j] =
-				this->element_width[j] < row[j].size() ?
-					row[j].size() : this->element_width[j];
+				this->element_width[j] < static_cast<int>(row[j].size()) ?
+					static_cast<int>(row[j].size()) : this->element_width[j];
 		}
 
 		this->container.push_back(row);
@@ -91,7 +91,7 @@ std::ostream& operator<<(std::ostream& out, Table& table) {
 	std::vector<std::string> horizontal_separators;
 	int element_size = 0;
 
-	auto get_width = [table](int index) {
+	auto get_width = [table](size_t index) {
 		return table.element_width[index] + 1;
 	};
 
@@ -162,6 +162,6 @@ size_t Row::size() const {
 	return this->container.size();
 }
 
-std::string& Row::operator[](int index) {
+std::string& Row::operator[](size_t index) {
 	return this->container[index];
 }

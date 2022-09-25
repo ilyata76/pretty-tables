@@ -11,7 +11,7 @@
 	
 	// TODO template
 	class Row {
-		private: // на время
+		private:
 			std::vector<std::string> container;
 		public:
 			Row();
@@ -21,7 +21,7 @@
 
 			size_t size() const;
 
-			std::string& operator[](int index);
+			std::string& operator[](size_t index);
 
 		friend class Table;
 
@@ -30,7 +30,7 @@
 	};
 
 	class Table {
-		private: // на время
+		private: 
 			Row headers;
 			std::vector<int> element_width;
 			std::vector<Row> container;
@@ -39,13 +39,13 @@
 			std::string horizontal_separator;
 			std::string intersection_separator;
 
-			int row_size;
+			size_t row_size;
 		public:
 			Table();
 
 			size_t size() const;
 
-			Row& operator[](int index);
+			Row& operator[](size_t index);
 
 			bool set_headers(Row headers);
 			bool add_row(Row row);
