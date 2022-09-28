@@ -9,11 +9,11 @@ set ( MAIN_TEST
 )
 
 set ( HEADERS
-    ${CMAKE_SOURCE_DIR}/include/prettytables.hpp
+    ${CMAKE_CURRENT_LIST_DIR}/include/prettytables.hpp
 )
 
 set ( SOURCES
-    ${CMAKE_SOURCE_DIR}/sources/prettytables.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/sources/prettytables.cpp
 )
 
 add_library( ${PROJECT_NAME} STATIC ${HEADERS} ${SOURCES})
@@ -25,7 +25,7 @@ if(BUILD_TEST)
     target_include_directories( 
         execut
         PRIVATE
-            ${CMAKE_SOURCE_DIR}/include
+            ${CMAKE_CURRENT_LIST_DIR}/include
     )
 
     target_link_libraries(execut ${PROJECT_NAME})

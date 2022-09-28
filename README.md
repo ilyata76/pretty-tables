@@ -1,5 +1,5 @@
 # pretty-tables
-code:
+Example:
 ```cpp
 int main() {
 	Table t;
