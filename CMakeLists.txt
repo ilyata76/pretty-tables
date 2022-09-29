@@ -20,14 +20,13 @@ add_library( ${PROJECT_NAME} STATIC ${HEADERS} ${SOURCES})
 
 if(BUILD_TEST)
 
-    add_executable(execut ${MAIN_TEST})
+    add_executable(main_test ${MAIN_TEST})
 
     target_include_directories( 
-        execut
+        main_test
         PRIVATE
             ${CMAKE_CURRENT_LIST_DIR}/include
     )
 
-    target_link_libraries(execut ${PROJECT_NAME})
-
+    target_link_libraries(main_test ${PROJECT_NAME})
 endif()
