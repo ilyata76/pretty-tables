@@ -34,6 +34,7 @@ int main() {
     t.colored = true;
 
 	Row rows[] = {
+		createRow({ "0", "BBB", "CCC" }),
 		Row{ { "1", "Adelaide"    , std::to_string(1158259) } },
 		Row{ { "2", "Brisbane"	, std::to_string(1857594) } },
 		Row{ { "3", "Darwin"		, std::to_string(120900) } },
@@ -47,7 +48,7 @@ int main() {
 		t << x;
 	}
 
-	t.add_row(Row{ {"a", "b"} }); 
+	t.add_row(Row{ {"a", "b", "c"} }); 
 		t.pop_back();
 
 	std::cout << t << "\n";

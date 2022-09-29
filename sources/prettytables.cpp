@@ -176,6 +176,11 @@ std::ostream& operator<<(std::ostream& out, Table table) {
 	return out;
 }
 
+Row createRow(std::vector<std::string> row)
+{
+	return Row{row};
+}
+
 Row::Row() {
 	//
 }

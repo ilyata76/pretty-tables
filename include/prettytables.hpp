@@ -7,6 +7,7 @@
 	#include <string>
 	#include <iostream>
 	#include <iomanip>
+	#include <stdarg.h>
 	//#include <algorithm>
 	
 	// TODO template
@@ -69,5 +70,6 @@
 		friend std::ostream& operator<<(std::ostream& out, Table table);
 	};
 
+	Row createRow(std::vector<std::string> row);
 
 #endif // !PRETTYTABLES_HPP
