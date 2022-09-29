@@ -6,6 +6,8 @@ Table::Table() {
 	this->intersection_separator = "+";
 
 	this->row_size = 0;
+
+	this->colored = false;
 }
 
 size_t Table::size() const {
@@ -89,7 +91,7 @@ Table& operator<<(Table& out, Row in){
 
 std::ostream& operator<<(std::ostream& out, Table table) {
 	std::vector<std::string> horizontal_separators;
-	int element_size = 0;
+	int element_size = 0; bool colored = false;
 
 	auto get_width = [table](size_t index) {
 		return table.element_width[index] + 2;
@@ -129,13 +131,42 @@ std::ostream& operator<<(std::ostream& out, Table table) {
 
 	print_horizontal_separators(); 	out << '\n';
 
+	/*
+		https://stackoverflow.com/questions/4053837/colorizing-text-in-the-console-with-c
+		Name            FG  BG
+		Black           30  40
+		Red             31  41
+		Green           32  42
+		Yellow          33  43
+		Blue            34  44
+		Magenta         35  45
+		Cyan            36  46
+		White           37  47
+		Bright Black    90  100
+		Bright Red      91  101
+		Bright Green    92  102
+		Bright Yellow   93  103
+		Bright Blue     94  104
+		Bright Magenta  95  105
+		Bright Cyan     96  106
+		Bright White    97  107
+	*/
+
+	std::string color_mode = "\033[0m";
+	std::string not_color_mode = "\033[0m";
+
 	// теперь выводим таблицу
 	for (size_t j = 0; j < table.size(); ++j) {
+
+		if (table.colored && !colored) { color_mode = "\033[0m"; colored = true; }
+		else if (table.colored && colored) { color_mode = "\x1B[36m"; colored = false; }
+
 		for (size_t i = 0; i < table[j].size(); ++i) {
 			auto element = table[j][i];
 			element_size = get_width(i) - 1;
-			out << table.vertical_separator << " " << std::left << std::setw(element_size) << element;
+			out << table.vertical_separator << color_mode << " " << std::left << std::setw(element_size) << element << not_color_mode;
 		}
+
 		out << table.vertical_separator;
 		out << '\n';
 	}

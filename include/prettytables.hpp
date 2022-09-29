@@ -39,6 +39,10 @@
 			std::string intersection_separator;
 
 			size_t row_size;
+
+		public:
+			bool colored;
+			
 		public:
 			Table();
 
