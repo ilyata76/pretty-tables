@@ -2,7 +2,7 @@
 
 Table::Table() {
 	this->vertical_separator = "|";
-	this->horizontal_separator = "—";
+	this->horizontal_separator = "-";
 	this->intersection_separator = "+";
 
 	this->row_size = 0;
@@ -73,7 +73,7 @@ bool Table::set_intersection_separator(std::string separator) {
 	return true;
 }
 
-std::ostream& operator<<(std::ostream& out, Row& row) {
+std::ostream& operator<<(std::ostream& out, Row row) {
 
 	for (const auto& element : row.container) {
 		out << ' ' << element;
@@ -82,12 +82,12 @@ std::ostream& operator<<(std::ostream& out, Row& row) {
 	return out;
 }
 
-Table& operator<<(Table& out, Row& in){
+Table& operator<<(Table& out, Row in){
 	out.add_row(in);
 	return out;
 }
 
-std::ostream& operator<<(std::ostream& out, Table& table) {
+std::ostream& operator<<(std::ostream& out, Table table) {
 	std::vector<std::string> horizontal_separators;
 	int element_size = 0;
 

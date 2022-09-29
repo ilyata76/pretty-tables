@@ -25,8 +25,7 @@
 
 		friend class Table;
 
-		friend std::ostream& operator<<(std::ostream& out, Row& row);
-		friend std::ostream& operator<<(std::ostream& out, Table& table);
+		friend std::ostream& operator<<(std::ostream& out, Row row);
 	};
 
 	class Table {
@@ -61,9 +60,9 @@
 			// плохо работает (таблица съезжает)
 			bool set_intersection_separator(std::string separator);
 
-		friend Table& operator<<(Table& out, Row& in);
+		friend Table& operator<<(Table& out, Row in);
 
-		friend std::ostream& operator<<(std::ostream& out, Table& table);
+		friend std::ostream& operator<<(std::ostream& out, Table table);
 	};
 
 
