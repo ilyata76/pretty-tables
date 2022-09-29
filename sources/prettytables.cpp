@@ -1,4 +1,4 @@
-#include "..\include\prettytables.hpp"
+#include "../include/prettytables.hpp"
 
 Table::Table() {
 	this->vertical_separator = "|";
