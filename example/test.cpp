@@ -40,6 +40,6 @@ int main() {
 		Row{ { "Perth"		, std::to_string(1554769) } } <<
 		Row{ { "Sydney"		, std::to_string(4336374) } };
 	t.add_row(Row{ {"a", "b"} }); t.pop_back();
-	std::cout << t;
+	std::cout << t << "\n";
 	return 0;
 }
