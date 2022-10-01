@@ -1,4 +1,4 @@
-#include <prettytables.hpp>
+#include <tia/prettytables.hpp>
 
 /* prettytable PYTHON
 +-----------+------------+
@@ -25,7 +25,7 @@
 | 5   | Melbourne | 3806092    |
 | 6   | Perth     | 1554769    |
 +-----+-----------+------------+
-цветная!!!
+!!!
 */
 
 int main() {

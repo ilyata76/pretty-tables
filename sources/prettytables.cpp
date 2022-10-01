@@ -1,4 +1,4 @@
-#include "../include/prettytables.hpp"
+п»ї#include "../include/tia/prettytables.hpp"
 
 Table::Table() {
 	this->vertical_separator = "|";
@@ -26,8 +26,8 @@ bool Table::set_headers(Row headers) {
 		this->element_width.push_back(static_cast<int>(this->headers.size()));
 	}
 
-	// скрининг на максимальные элементы
-	// скрининг по заголовкам
+	// СЃРєСЂРёРЅРёРЅРі РЅР° РјР°РєСЃРёРјР°Р»СЊРЅС‹Рµ СЌР»РµРјРµРЅС‚С‹
+	// СЃРєСЂРёРЅРёРЅРі РїРѕ Р·Р°РіРѕР»РѕРІРєР°Рј
 	for (int j = 0; j < this->headers.size(); j++) {
 		this->element_width[j] =
 			this->element_width[j] < static_cast<int>(this->headers[j].size()) ?
@@ -40,7 +40,7 @@ bool Table::set_headers(Row headers) {
 bool Table::add_row(Row row) {
 	if (row.size() == this->headers.size()) {
 
-		// скрининг на максимальные размеры ячеек
+		// СЃРєСЂРёРЅРёРЅРі РЅР° РјР°РєСЃРёРјР°Р»СЊРЅС‹Рµ СЂР°Р·РјРµСЂС‹ СЏС‡РµРµРє
 		for (int j = 0; j < row.size(); ++j) {
 			this->element_width[j] =
 				this->element_width[j] < static_cast<int>(row[j].size()) ?
@@ -97,7 +97,7 @@ std::ostream& operator<<(std::ostream& out, Table table) {
 		return table.element_width[index] + 2;
 	};
 
-	// определим horizontal_separators;
+	// РѕРїСЂРµРґРµР»РёРј horizontal_separators;
 	horizontal_separators.push_back(table.intersection_separator);
 	for (size_t i = 0; i < table.headers.size(); ++i) {
 		element_size = get_width(i);
@@ -109,17 +109,17 @@ std::ostream& operator<<(std::ostream& out, Table table) {
 	horizontal_separators.pop_back();
 	horizontal_separators.push_back(table.intersection_separator);
 
-	// функция для разделителя горизонтального
+	// С„СѓРЅРєС†РёСЏ РґР»СЏ СЂР°Р·РґРµР»РёС‚РµР»СЏ РіРѕСЂРёР·РѕРЅС‚Р°Р»СЊРЅРѕРіРѕ
 	auto print_horizontal_separators = [&]() {
 		for (const auto& separator : horizontal_separators) {
 			out << separator;
 		}
 	}; 
 	
-	/// используем 
+	/// РёСЃРїРѕР»СЊР·СѓРµРј 
 	print_horizontal_separators();  out << '\n';
 
-	// выведем заголовки
+	// РІС‹РІРµРґРµРј Р·Р°РіРѕР»РѕРІРєРё
 	for (size_t i = 0; i < table.headers.size(); ++i) {
 		auto element = table.headers[i];
 		element_size = get_width(i) - 1;
@@ -155,7 +155,7 @@ std::ostream& operator<<(std::ostream& out, Table table) {
 	std::string color_mode = "\033[0m";
 	std::string not_color_mode = "\033[0m";
 
-	// теперь выводим таблицу
+	// С‚РµРїРµСЂСЊ РІС‹РІРѕРґРёРј С‚Р°Р±Р»РёС†Сѓ
 	for (size_t j = 0; j < table.size(); ++j) {
 
 		if (table.colored && !colored) { color_mode = "\033[0m"; colored = true; }

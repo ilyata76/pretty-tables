@@ -9,7 +9,7 @@ set ( MAIN_TEST
 )
 
 set ( HEADERS
-    ${CMAKE_CURRENT_LIST_DIR}/include/prettytables.hpp
+    ${CMAKE_CURRENT_LIST_DIR}/include/tia/prettytables.hpp
 )
 
 set ( SOURCES

@@ -1,4 +1,4 @@
-#pragma once
+п»ї#pragma once
 
 #ifndef PRETTYTABLES_HPP
 #define PRETTYTABLES_HPP
@@ -56,13 +56,13 @@
 
 			void pop_back();
 
-			// плохо работает (таблица съезжает)
+			// РїР»РѕС…Рѕ СЂР°Р±РѕС‚Р°РµС‚ (С‚Р°Р±Р»РёС†Р° СЃСЉРµР·Р¶Р°РµС‚)
 			bool set_vertical_separator(std::string separator);
 
-			// плохо работает (таблица съезжает)
+			// РїР»РѕС…Рѕ СЂР°Р±РѕС‚Р°РµС‚ (С‚Р°Р±Р»РёС†Р° СЃСЉРµР·Р¶Р°РµС‚)
 			bool set_horizontal_separator(std::string separator);
 
-			// плохо работает (таблица съезжает)
+			// РїР»РѕС…Рѕ СЂР°Р±РѕС‚Р°РµС‚ (С‚Р°Р±Р»РёС†Р° СЃСЉРµР·Р¶Р°РµС‚)
 			bool set_intersection_separator(std::string separator);
 
 		friend Table& operator<<(Table& out, Row in);
